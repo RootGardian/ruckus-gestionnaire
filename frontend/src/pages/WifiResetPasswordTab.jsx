@@ -194,6 +194,7 @@ const WifiResetPasswordTab = ({ preselectedUser, onClearPreselection, onSuccessR
         notes
       };
 
+      const res = await axios.post(`${API_URL}/api/wifi/reset-password`, payload, headers);
       const emailFailed = Boolean(res.data.email?.requested && !res.data.email?.sent);
       setResult(res.data);
       if (!emailFailed) {
