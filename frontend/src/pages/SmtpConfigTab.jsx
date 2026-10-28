@@ -52,6 +52,7 @@ const SmtpConfigTab = () => {
         setConfig(prev => ({
           ...prev,
           ...res.data,
+          pass: '',
           port: parseInt(res.data.port, 10) || 587,
           default_ssid: res.data.default_ssid || 'CORPORATE-BCRG'
         }));
@@ -75,7 +76,11 @@ const SmtpConfigTab = () => {
     try {
       const token = localStorage.getItem('token');
       const headers = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
-      await axios.put(`${API_URL}/api/wifi/smtp-config`, config, headers);
+      const payload = { ...config };
+      if (!payload.pass || String(payload.pass).includes('•')) {
+        delete payload.pass;
+      }
+      await axios.put(`${API_URL}/api/wifi/smtp-config`, payload, headers);
       setSaveMessage('✓ Configuration SMTP enregistrée avec succès.');
       setTimeout(() => setSaveMessage(''), 4000);
       fetchConfig();

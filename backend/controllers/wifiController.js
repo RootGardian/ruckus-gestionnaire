@@ -164,10 +164,10 @@ const resetWifiPassword = async (req, res) => {
 const getSmtpConfigController = async (req, res) => {
   try {
     const config = await smtpService.getSmtpConfig();
-    // Masquer le mot de passe pour la sécurité de l'interface
+    // Ne jamais renvoyer les balles '••••••••' comme valeur de pass pour éviter qu'elles ne soient réenregistrées
     res.json({
       ...config,
-      pass: config.pass ? '••••••••' : '',
+      pass: '',
       has_password: Boolean(config.pass)
     });
   } catch (error) {

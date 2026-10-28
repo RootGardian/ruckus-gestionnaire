@@ -50,8 +50,13 @@ const saveSmtpConfig = async (newConfig) => {
     is_active: true
   };
 
-  // Ne mettre à jour le mot de passe que s'il est fourni non vide
-  if (newConfig.pass && String(newConfig.pass).trim() !== '') {
+  // Ne mettre à jour le mot de passe que s'il est fourni non vide et qu'il ne s'agit pas d'un masque de balles
+  if (
+    newConfig.pass &&
+    typeof newConfig.pass === 'string' &&
+    newConfig.pass.trim() !== '' &&
+    !newConfig.pass.includes('•')
+  ) {
     payload.pass = String(newConfig.pass).trim();
   }
 

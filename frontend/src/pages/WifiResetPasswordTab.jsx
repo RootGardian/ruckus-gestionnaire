@@ -194,9 +194,13 @@ const WifiResetPasswordTab = ({ preselectedUser, onClearPreselection, onSuccessR
         notes
       };
 
-      const res = await axios.post(`${API_URL}/api/wifi/reset-password`, payload, headers);
+      const emailFailed = Boolean(res.data.email?.requested && !res.data.email?.sent);
       setResult(res.data);
-      setCountdown(5);
+      if (!emailFailed) {
+        setCountdown(5);
+      } else {
+        setCountdown(null);
+      }
     } catch (err) {
       if (err.response?.status === 429) {
         setError(" Limite de sécurité atteinte (Anti-Déni de Service) : Plus de 10 réinitialisations par minute ont été exécutées. Cette tentative anormale a été bloquée et signalée au système de sécurité.");
