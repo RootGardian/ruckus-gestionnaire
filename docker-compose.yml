@@ -1,0 +1,114 @@
+services:
+  # =========================================================
+  # 🗄️ 1. Base de Données PostgreSQL
+  # =========================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: bcrg-ruckus-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-ruckus}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-BcrgSecureDb2026!}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bcrg-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-ruckus}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # =========================================================
+  # ⚙️ 2. API Backend (Node.js / Express)
+  # =========================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bcrg-ruckus-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 5001
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-ruckus}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-BcrgSecureDb2026!}
+      DB_SSL: "false"
+      JWT_SECRET: ${JWT_SECRET:-bcrg_ruckus_jwt_supersecret_key_2026}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:-bcrg_32_bytes_super_secret_encryption_key_2026}
+      DEFAULT_ADMIN_EMAIL: ${DEFAULT_ADMIN_EMAIL:-admin@bcrg.local}
+      DEFAULT_ADMIN_PASSWORD: ${DEFAULT_ADMIN_PASSWORD:-Bcrg@dmin@2026}
+      DEFAULT_ADMIN_MATRICULE: ${DEFAULT_ADMIN_MATRICULE:-ADMIN001}
+      WIFI_DEFAULT_SSID: ${WIFI_DEFAULT_SSID:-CORPORATE-BCRG}
+      SMTP_HOST: ${SMTP_HOST:-smtp.office365.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-Support IT BCRG <wifi-support@bcrg-guinee.org>}
+      USE_HTTPS: ${USE_HTTPS:-false}
+      ENABLE_CLUSTER: ${ENABLE_CLUSTER:-true}
+    networks:
+      - bcrg-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5001:5001"
+    expose:
+      - "5001"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # =========================================================
+  # 🌐 3. Frontend & Reverse Proxy (React + Nginx)
+  # =========================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ""
+    container_name: bcrg-ruckus-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${PORT:-3001}:80"
+    networks:
+      - bcrg-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# =========================================================
+# 💾 Volumes persistants
+# =========================================================
+volumes:
+  postgres_data:
+    name: bcrg_ruckus_postgres_data
+
+# =========================================================
+# 🔌 Réseau interne isolé
+# =========================================================
+networks:
+  bcrg-net:
+    name: bcrg_ruckus_network
+    driver: bridge

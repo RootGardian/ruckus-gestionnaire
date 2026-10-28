@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Dégradé de fond basé sur le Vert Foncé Pantone 567 C -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#245349"/>
+      <stop offset="100%" stop-color="#15322C"/>
+    </linearGradient>
+
+    <!-- Dégradé doré Pantone 456 C vers Orange 2012 C -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4B713"/>
+      <stop offset="60%" stop-color="#B49C10"/>
+      <stop offset="100%" stop-color="#F29111"/>
+    </linearGradient>
+
+    <!-- Dégradé accents chaleureux (Pantone 172 C / 2012 C) -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F29111"/>
+      <stop offset="100%" stop-color="#E74920"/>
+    </linearGradient>
+
+    <!-- Ombre douce pour le relief -->
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Fond style icône d'application moderne (Squircle) -->
+  <rect x="32" y="32" width="448" height="448" rx="108" fill="url(#bgGradient)"/>
+
+  <!-- Bordure subtile dorée -->
+  <rect x="32" y="32" width="448" height="448" rx="108" fill="none" stroke="#B49C10" stroke-width="3" stroke-opacity="0.25"/>
+
+  <!-- Groupe Symbolique : Hub Central & Nœuds Applicatifs -->
+  <g filter="url(#shadow)">
+    <!-- Lignes de liaison (Hub réseau / SSO) -->
+    <line x1="256" y1="256" x2="256" y2="135" stroke="#B49C10" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+    <line x1="256" y1="256" x2="377" y2="256" stroke="#B49C10" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+    <line x1="256" y1="256" x2="256" y2="377" stroke="#B49C10" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+    <line x1="256" y1="256" x2="135" y2="256" stroke="#B49C10" stroke-width="12" stroke-linecap="round" stroke-opacity="0.6"/>
+
+    <!-- Lignes diagonales secondaires -->
+    <line x1="256" y1="256" x2="345" y2="167" stroke="#F29111" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 8" stroke-opacity="0.5"/>
+    <line x1="256" y1="256" x2="167" y2="345" stroke="#F29111" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 8" stroke-opacity="0.5"/>
+
+    <!-- Nœud Central (Le Portail / L'Active Directory) -->
+    <circle cx="256" cy="256" r="62" fill="url(#goldGradient)"/>
+    <circle cx="256" cy="256" r="32" fill="#1D433B"/>
+
+    <!-- Petit point focal au centre -->
+    <circle cx="256" cy="256" r="14" fill="#F29111"/>
+
+    <!-- Nœuds Satellites (Les Applications / PWA) -->
+    <!-- Haut -->
+    <circle cx="256" cy="135" r="32" fill="url(#goldGradient)"/>
+    <!-- Droite (Accent orange secondaire) -->
+    <circle cx="377" cy="256" r="32" fill="url(#accentGradient)"/>
+    <!-- Bas -->
+    <circle cx="256" cy="377" r="32" fill="url(#goldGradient)"/>
+    <!-- Gauche (Accent rouge-orangé) -->
+    <circle cx="135" cy="256" r="32" fill="url(#accentGradient)"/>
+
+    <!-- Micro-satellites d'angle -->
+    <circle cx="345" cy="167" r="16" fill="#F29111"/>
+    <circle cx="167" cy="345" r="16" fill="#E74920"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+services:
+  backend:
+    environment:
+      USE_HTTPS: "true"
+
+  frontend:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./frontend/nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro

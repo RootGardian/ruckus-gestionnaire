@@ -1,0 +1,260 @@
+/* ========================================================
+   PAGE DE MAINTENANCE — CHARTE GRAPHIQUE OFFICIELLE DU HUB BCRG
+   ======================================================== */
+
+:root {
+  --bcrg-green: #1a3c2c;
+  --bcrg-green-light: #25513d;
+  --bg-gray: #f4f7f6;
+  --text-dark: #1c2b36;
+  --text-gray: #64748b;
+  --white: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+.maintenance-page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-gray);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 1. EN-TÊTE BLANC ÉPURÉ (IDENTIQUE AU TOPBAR DU HUB) --- */
+.maintenance-header {
+  height: 80px;
+  background-color: var(--white);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.maintenance-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.maintenance-logo {
+  height: 42px;
+  width: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.maintenance-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.maintenance-brand-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+.maintenance-brand-sub {
+  font-size: 0.72rem;
+  color: var(--bcrg-green);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+.maintenance-topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.maintenance-topbar-link:hover {
+  background-color: #f1f5f9;
+  color: var(--text-dark);
+}
+
+/* --- 2. CONTENEUR CENTRAL --- */
+.maintenance-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px;
+  max-width: 740px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- 3. CARTE DE MAINTENANCE (BORDURE SOBRE SANS BANDEAU COLORÉ) --- */
+.maintenance-card {
+  width: 100%;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 44px 36px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  text-align: center;
+  position: relative;
+}
+
+/* --- 4. ICÔNE DE MAINTENANCE (SOBRE SANS HALO LUMINEUX) --- */
+.maintenance-icon-box {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ea580c;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.06);
+}
+
+/* --- 5. BADGE DE STATUT ÉPURÉ (STYLE PILLULE DU HUB) --- */
+.maintenance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.maintenance-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ea580c;
+  flex-shrink: 0;
+}
+
+/* --- TITRES ET TEXTES --- */
+.maintenance-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.maintenance-app-highlight {
+  color: var(--bcrg-green);
+}
+
+.maintenance-desc {
+  font-size: 0.96rem;
+  color: var(--text-gray);
+  max-width: 580px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.maintenance-desc strong {
+  color: var(--text-dark);
+}
+
+/* --- BOUTON RETOUR (STYLE OFFICIEL DU HUB) --- */
+.maintenance-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.btn-maint-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border-radius: 10px;
+  background-color: var(--bcrg-green);
+  color: var(--white);
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(26, 60, 44, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-maint-primary:hover {
+  background-color: var(--bcrg-green-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(26, 60, 44, 0.25);
+}
+
+/* --- NOTE D'ASSISTANCE --- */
+.maintenance-support-note {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.maintenance-support-note svg {
+  color: var(--bcrg-green);
+  flex-shrink: 0;
+}
+
+/* --- FOOTER --- */
+.maintenance-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.82rem;
+  color: var(--text-gray);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--white);
+}
+
+@media (max-width: 640px) {
+  .maintenance-header {
+    padding: 0 20px;
+    height: 70px;
+  }
+  
+  .maintenance-card {
+    padding: 32px 18px;
+  }
+
+  .maintenance-title {
+    font-size: 1.45rem;
+  }
+
+  .maintenance-topbar-link span {
+    display: none;
+  }
+}

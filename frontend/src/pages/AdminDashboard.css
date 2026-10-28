@@ -1,0 +1,385 @@
+/* ===================================================================
+   🏛️ CHARTE GRAPHIQUE OFFICIELLE BCRG (FIDÈLE AUX CAPTURES D'ÉCRAN DU HUB)
+   Fond vert profond (#143826), Item actif en pilule blanche, Cartes blanches avec ombres douces
+   =================================================================== */
+
+:root {
+  --bcrg-green: #143826;
+  --bcrg-dark: #0f2b1d;
+  --bcrg-accent-green: #15803d;
+  --bcrg-bg: #f8fafc;
+  --text-dark: #0f172a;
+  --text-gray: #64748b;
+  --white: #ffffff;
+}
+
+/* Layout principal */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  color: #0f172a;
+  overflow: hidden;
+}
+
+/* Sidebar latérale - Vert profond BCRG (#143826) */
+.sidebar {
+  background: #143826;
+  color: #ffffff;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  z-index: 100;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  overflow-x: hidden;
+}
+
+.sidebar.open {
+  width: 255px;
+}
+
+.sidebar.closed {
+  width: 78px;
+}
+
+.sidebar-header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 20px;
+  display: flex !important;
+  align-items: center !important;
+  justifyContent: space-between !important;
+  min-height: 80px;
+  transition: padding 0.3s ease;
+}
+
+.sidebar.closed .sidebar-header {
+  padding: 20px 8px !important;
+  justify-content: center !important;
+  gap: 6px;
+}
+
+.sidebar-logo {
+  height: 38px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.sidebar.closed .sidebar-logo {
+  height: 28px !important;
+  max-width: 32px !important;
+}
+
+.toggle-btn {
+  margin-left: auto !important;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.sidebar.closed .toggle-btn {
+  margin-left: 2px !important;
+}
+
+.toggle-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 10px 0;
+  overflow-y: auto;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Item inactif dans la sidebar */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  margin: 2px 14px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ITEM ACTIF DANS LA SIDEBAR (REMARQUER LA PILULE BLANCHE DÉTACHÉE COMME SUR L'IMAGE 1, 2 ET 3) */
+.nav-item.active {
+  background: #ffffff !important;
+  color: #143826 !important;
+  font-weight: 700;
+  border-radius: 12px;
+  margin: 2px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.nav-item.active .nav-icon {
+  color: #143826 !important;
+}
+
+.nav-icon {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+/* Zone principale de contenu */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #f8fafc;
+}
+
+/* Barre supérieure (Topbar) */
+.topbar {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 18px 36px;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-left h2,
+.topbar-left h3,
+.topbar-left .topbar-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #143826;
+  letter-spacing: 0.6px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.topbar-right {
+  margin-left: auto !important;
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-container {
+  position: relative;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.user-profile:hover {
+  background: #f8fafc;
+}
+
+.user-profile .avatar {
+  width: 42px;
+  height: 42px;
+  background: #143826;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.user-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.user-email {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.dropdown-icon {
+  color: #94a3b8;
+  margin-left: 2px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: #f1f5f9;
+}
+
+.dropdown-item.text-red {
+  color: #dc2626;
+}
+
+.dropdown-item.text-red:hover {
+  background: #fee2e2;
+}
+
+/* Conteneur de page */
+.content-area {
+  flex: 1;
+  padding: 28px 36px 40px;
+}
+
+/* HERO HEADER CARD (BANDEAU VERT EXACT COMME SUR LES CAPTURES D'ÉCRAN DU HUB) */
+.hero-header-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #163325;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 32px;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(22, 51, 37, 0.12);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 1.72rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.hero-subtitle {
+  margin: 8px 0 0 0;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  max-width: 760px;
+  font-weight: 400;
+}
+
+.hero-date-box {
+  margin-left: auto !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Animation et utilitaires */
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
