@@ -1,0 +1,173 @@
+.bcrg-reset-success-box {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 14px;
+  padding: 24px;
+  animation: bcrgFadeIn 0.25s ease-out;
+}
+
+.bcrg-success-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.bcrg-success-title-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bcrg-success-icon {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.bcrg-success-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #143826;
+}
+
+.bcrg-countdown-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.bcrg-countdown-pause-btn {
+  background: none;
+  border: none;
+  color: #166534;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.bcrg-countdown-pause-btn:hover {
+  color: #143826;
+}
+
+.bcrg-success-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.bcrg-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bcrg-detail-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bcrg-detail-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.bcrg-detail-value.monospace {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.bcrg-detail-value.highlight {
+  color: #143826;
+}
+
+.bcrg-detail-value.password {
+  color: #143826;
+  font-size: 1.1rem;
+}
+
+.bcrg-detail-email-status {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.bcrg-email-ok {
+  color: #15803d;
+}
+
+.bcrg-email-err {
+  color: #dc2626;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.bcrg-email-muted {
+  color: #64748b;
+}
+
+.bcrg-success-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bcrg-btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #143826;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bcrg-btn-copy:hover {
+  background: #1b4933;
+}
+
+.bcrg-btn-return {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bcrg-btn-return:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}

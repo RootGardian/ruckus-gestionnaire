@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { API_URL } from '../config/api';
 import {
   Mail,
   Save,
@@ -16,6 +14,7 @@ import {
   ShieldCheck,
   Check
 } from 'lucide-react';
+import { wifiService } from '../services/wifiService';
 import './AdminPanel.css';
 
 const SmtpConfigTab = () => {
@@ -35,7 +34,6 @@ const SmtpConfigTab = () => {
   const [saving, setSaving] = useState(false);
   const [testing, setTesting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
   const [testEmail, setTestEmail] = useState('');
   const [testResult, setTestResult] = useState(null);
   const [saveMessage, setSaveMessage] = useState('');
@@ -45,16 +43,14 @@ const SmtpConfigTab = () => {
     setLoading(true);
     setError('');
     try {
-      const token = localStorage.getItem('token');
-      const headers = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
-      const res = await axios.get(`${API_URL}/api/wifi/smtp-config`, headers);
-      if (res.data) {
+      const data = await wifiService.getSmtpConfig();
+      if (data) {
         setConfig(prev => ({
           ...prev,
-          ...res.data,
+          ...data,
           pass: '',
-          port: parseInt(res.data.port, 10) || 587,
-          default_ssid: res.data.default_ssid || 'CORPORATE-BCRG'
+          port: parseInt(data.port, 10) || 587,
+          default_ssid: data.default_ssid || 'CORPORATE-BCRG'
         }));
       }
     } catch (err) {
@@ -74,13 +70,11 @@ const SmtpConfigTab = () => {
     setError('');
     setSaveMessage('');
     try {
-      const token = localStorage.getItem('token');
-      const headers = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
       const payload = { ...config };
       if (!payload.pass || String(payload.pass).includes('•')) {
         delete payload.pass;
       }
-      await axios.put(`${API_URL}/api/wifi/smtp-config`, payload, headers);
+      await wifiService.saveSmtpConfig(payload);
       setSaveMessage('✓ Configuration SMTP enregistrée avec succès.');
       setTimeout(() => setSaveMessage(''), 4000);
       fetchConfig();
@@ -95,10 +89,8 @@ const SmtpConfigTab = () => {
     setTesting(true);
     setTestResult(null);
     try {
-      const token = localStorage.getItem('token');
-      const headers = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
-      const res = await axios.post(`${API_URL}/api/wifi/smtp-test`, { testEmail }, headers);
-      setTestResult(res.data);
+      const res = await wifiService.testSmtpConnection(testEmail);
+      setTestResult(res);
     } catch (err) {
       setTestResult({
         success: false,

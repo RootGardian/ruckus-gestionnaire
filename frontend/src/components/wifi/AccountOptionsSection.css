@@ -1,0 +1,189 @@
+.bcrg-account-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bcrg-options-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.bcrg-options-card.highlight {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.bcrg-section-heading {
+  display: block;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #143826;
+  margin-bottom: 12px;
+}
+
+.bcrg-expiry-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bcrg-radio-option,
+.bcrg-radio-option-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bcrg-radio-option.selected {
+  border: 2px solid #143826;
+  background: #f0fdf4;
+}
+
+.bcrg-radio-option-custom {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.bcrg-radio-option-custom.selected {
+  border: 2px solid #143826;
+  background: #f0fdf4;
+}
+
+.bcrg-radio-option-custom .bcrg-radio-option-inner {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.bcrg-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bcrg-radio-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.bcrg-radio-desc {
+  font-size: 0.76rem;
+  color: #64748b;
+}
+
+.bcrg-duration-selector {
+  margin-top: 10px;
+  margin-left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.bcrg-select-days {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #ffffff;
+  color: #143826;
+}
+
+.bcrg-checkbox-group {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.bcrg-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bcrg-checkbox-label.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bcrg-checkbox-label input[type="checkbox"],
+.bcrg-radio-option input[type="radio"],
+.bcrg-radio-option-inner input[type="radio"] {
+  accent-color: #143826;
+  width: 16px;
+  height: 16px;
+}
+
+.bcrg-email-title {
+  font-weight: 700;
+  color: #143826;
+}
+
+.bcrg-email-body {
+  margin-top: 12px;
+  margin-left: 26px;
+}
+
+.bcrg-email-input-wrapper {
+  position: relative;
+  max-width: 450px;
+}
+
+.bcrg-email-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+}
+
+.bcrg-email-input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.bcrg-no-email-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #b45309;
+}
+
+.bcrg-notes-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.88rem;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.bcrg-notes-textarea:focus {
+  border-color: #143826;
+}
